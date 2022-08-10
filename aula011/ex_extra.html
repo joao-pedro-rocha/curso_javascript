@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identificação</title>
+</head>
+<body>
+    <h1>Nacionalidade</h1>
+    País onde mora: <input type="text" name="país" id="país">
+    <input type="button" value="Confirmar" onclick="mensagem()">
+    <div id="msg">
+
+    </div>
+
+    <script>
+        function mensagem() {
+            var txtpais = window.document.querySelector('input#país')
+            var pais = String(txtpais.value)
+            var msg = window.document.querySelector('div#msg')
+            msg.innerHTML = `Morando em <strong>${pais}</strong>.`
+            if (pais == 'Brasil') {
+                msg.innerHTML += `<p>Você é <strong>brasileiro</strong>.</p>`
+            }
+            // console.log(txtpais)
+            // console.log(msg)
+            // console.log(pais)
+        } 
+    </script>
+</body>
+</html>
