@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This arrow function</title>
+
+    <style>
+        body {
+            background: rgb(87, 150, 250);
+            font: normal 15pt Arial;
+            text-align: left;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        header {
+            color: white;
+        }
+        
+        section {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            width: 500px;
+            margin: auto;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.431);
+        }
+        
+        #values {
+            width: 35%;
+        }
+        
+        footer {
+            color: white;
+            text-align: center;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>This arrow function</h1>
+    </header>
+    <section>
+        <div>
+            <h2>Function comum</h2>
+            <button id="btn">Click here!</button>
+            <p><strong>Valor this:</strong></p>
+            <p id="demo"></p>
+            <hr>
+            <br>
+        </div>
+        <div>
+            <h2>Arrow function</h2>
+            <button id="btn2">Click here!</button>
+            <p><strong>Valor this:</strong></p>
+            <p id="demo2"></p>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; CursoemVídeo</p>
+    </footer>
+    <script>
+        // Function comum
+        let teste
+
+        teste = function() {
+            document.getElementById('demo').innerHTML += this
+        }
+
+        // Ao carregar a janela o this é chamado e tem o valor object Window.        
+        window.addEventListener('load', teste)
+
+        /*
+        Quando o botão é clicado o this passa a ter o valor object 
+        HTMLButtonElement.
+        */
+        document.getElementById('btn').addEventListener('click', teste)
+
+        //Arrow function
+        let teste2
+
+        teste2 = () => document.getElementById('demo2').innerHTML += this
+
+        // Função chamada pela window: object Window.
+        window.addEventListener('load', teste2)
+        
+        // função chamada pelo botão: object Window.
+        document.getElementById('btn2').addEventListener('click', teste2)
+    </script>
+</body>
+</html>

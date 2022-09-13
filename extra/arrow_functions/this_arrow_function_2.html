@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This arrow function 2</title>
+
+    <style>
+        body {
+            background: rgb(87, 150, 250);
+            font: normal 15pt Arial;
+            text-align: left;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        header {
+            color: white;
+        }
+        
+        section {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            width: 500px;
+            margin: auto;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.431);
+        }
+        
+        #values {
+            width: 35%;
+        }
+        
+        footer {
+            color: white;
+            text-align: center;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>This arrow function pt. 2</h1>
+    </header>
+    <section>
+        <div>
+            <h2>Function comum</h2>
+            <button id="btn">Click here!</button>
+            <hr>
+        </div>
+        <div>
+            <h2>Arrow function</h2>
+            <button id="btn2">Click here!</button>
+            <hr>
+        </div>
+        <div>
+            <h2>Make your sandwich!</h2>
+            <button id="make-sandwich">Make my sandwich!</button>
+            <hr>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; CursoemVídeo</p>
+    </footer>
+    <script>
+        /*
+        FUNCTION COMUM
+
+        Ao chamar o this através de um botão usando uma function normal, o 
+        resultado é o próprio elemento botão. Em uma função normal o this
+        representa o elemento que o chama.
+        */
+        const btn = document.getElementById('btn')
+
+        btn.addEventListener('click', function() {
+            console.log(this)
+        })
+
+        /*
+        ARROW FUNCTION
+
+        Ao chamar o this através de um botão usando uma arrow function, o 
+        resultado é o object Window. Em uma arrow function o this representa
+        o objeto em contexto. Se o this estiver em um objeto específico ele
+        representará o mesmo. E se ele não for chamado dentro de um objeto, ele 
+        representará o object Window.
+        */
+        const btn2 = document.getElementById('btn2')
+        
+        btn2.addEventListener('click', () => {
+            console.log(this)
+        })
+
+        // OUTRO EXEMPLO
+        const sandwich = {
+            bread: 'white',
+            cheese: 'cheddar',
+
+            prepare: function() {
+                return `I want a sandwich with ${this.bread} bread and ${this.cheese} cheese!`
+            },
+
+            /*
+            Arrow functions são muito úteis quando precisamos acessar o this em
+            funções dentro de funções.
+
+            Quando se usa uma funtion normal dentro de outra função é preciso 
+            guardar o valor anterior do this em uma variável that.
+            */
+            make: function() {
+                // var that = this;
+                window.setTimeout(() => {
+                    console.log(this.prepare())
+                }, 500)
+            }
+        }
+
+        const makeMySandwich = document.getElementById('make-sandwich')
+
+        makeMySandwich.addEventListener('click', function() {
+            sandwich.make()
+        })
+    </script>
+</body>
+</html>
