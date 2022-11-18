@@ -5,7 +5,6 @@ Fonte: https://www.w3schools.com/js/js_arrow_function.asp
 São usadas para escrever menos código. Declara-se o nome da função como se 
 fosse uma variável, depois são passados os parâmetros e no final as instuções  
 da função (após o "=>").
-
 */
 let somar = (n1, n2) => n1 + n2
 
